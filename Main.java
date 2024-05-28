@@ -2,7 +2,7 @@
 import java.util.Scanner;
 
 public class Main {
-    private static ProdutoDAO produtoDAO = new ProdutoDAO();
+    private static CarroDAO carroDAO = new CarroDAO();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -13,16 +13,16 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    criarProduto();
+                    criarCarro();
                     break;
                 case 2:
-                    listarProdutos();
+                    listarCarros();
                     break;
                 case 3:
-                    atualizarProduto();
+                    atualizarCarro();
                     break;
                 case 4:
-                    deletarProduto();
+                    deletarCarro();
                     break;
                 case 5:
                     System.out.println("Saindo...");
@@ -36,15 +36,15 @@ public class Main {
 
     private static void exibirMenu() {
         System.out.println("Menu:");
-        System.out.println("1. Criar Produto");
-        System.out.println("2. Listar Produtos");
-        System.out.println("3. Atualizar Produto");
-        System.out.println("4. Deletar Produto");
+        System.out.println("1. Criar Carro");
+        System.out.println("2. Listar Carros");
+        System.out.println("3. Atualizar Carro");
+        System.out.println("4. Deletar Carro");
         System.out.println("5. Sair");
         System.out.print("Escolha uma opção: ");
     }
 
-    private static void criarProduto() {
+    private static void criarCarro() {
         System.out.print("ID: ");
         int id = scanner.nextInt();
         scanner.nextLine();  // Consumir nova linha
@@ -54,43 +54,43 @@ public class Main {
         double preco = scanner.nextDouble();
         scanner.nextLine();  // Consumir nova linha
 
-        Produto produto = new Produto(id, nome, preco);
-        produtoDAO.adicionarProduto(produto);
-        System.out.println("Produto criado com sucesso.");
+        Carro carro = new Carro(id, nome, preco);
+        carroDAO.adicionarCarro(carro);
+        System.out.println("Carro criado com sucesso.");
     }
 
-    private static void listarProdutos() {
-        System.out.println("Lista de Produtos:");
-        for (Produto produto : produtoDAO.listarProdutos()) {
-            System.out.println(produto);
+    private static void listarCarros() {
+        System.out.println("Lista de Carros:");
+        for (Carro carro : carroDAO.listarCarros()) {
+            System.out.println(carro);
         }
     }
 
-    private static void atualizarProduto() {
-        System.out.print("ID do produto a ser atualizado: ");
+    private static void atualizarCarro() {
+        System.out.print("ID do carro a ser atualizado: ");
         int id = scanner.nextInt();
         scanner.nextLine();  // Consumir nova linha
-        Produto produto = produtoDAO.buscarProduto(id);
-        if (produto != null) {
+        Carro carro = carroDAO.buscarCarro(id);
+        if (carro != null) {
             System.out.print("Novo nome: ");
             String nome = scanner.nextLine();
             System.out.print("Novo preço: ");
             double preco = scanner.nextDouble();
             scanner.nextLine();  // Consumir nova linha
 
-            Produto produtoAtualizado = new Produto(id, nome, preco);
-            produtoDAO.atualizarProduto(produtoAtualizado);
-            System.out.println("Produto atualizado com sucesso.");
+            Carro carroAtualizado = new Carro(id, nome, preco);
+            carroDAO.atualizarCarro(carroAtualizado);
+            System.out.println("Carro atualizado com sucesso.");
         } else {
-            System.out.println("Produto não encontrado.");
+            System.out.println("Carro não encontrado.");
         }
     }
 
-    private static void deletarProduto() {
-        System.out.print("ID do produto a ser deletado: ");
+    private static void deletarCarro() {
+        System.out.print("ID do carro a ser deletado: ");
         int id = scanner.nextInt();
         scanner.nextLine();  // Consumir nova linha
-        produtoDAO.removerProduto(id);
-        System.out.println("Produto deletado com sucesso.");
+        carroDAO.removerCarro(id);
+        System.out.println("Carro deletado com sucesso.");
     }
 }
