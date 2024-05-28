@@ -1,10 +1,10 @@
-// Produto.java
-public class Produto {
+// Carro.java
+public class Carro {
     private int id;
     private String nome;
     private double preco;
 
-    public Produto(int id, String nome, double preco) {
+    public Carro(int id, String nome, double preco) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
@@ -40,9 +40,8 @@ public class Produto {
         return id + "," + nome + "," + preco;
     }
 
-    public static Produto fromString(String str) {
+    public static Carro fromString(String str) {
         String[] partes = str.split(",");
-        return new Produto(Integer.parseInt(partes[0]), partes[1], Double.parseDouble(partes[2]));
+        return new Carro(Integer.parseInt(partes[0]), partes[1], Double.parseDouble(partes[2]));
     }
 }
-
